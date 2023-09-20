@@ -6,6 +6,7 @@ import WebVitals from "@/components/home/web-vitals";
 import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
+import { start } from "repl";
 
 export default async function Home() {
   const { stargazers_count: stars } = await fetch(
@@ -116,17 +117,17 @@ export default async function Home() {
 
 const features = [
   {
+    title: "You help to reduce Co2",
+    description: "สวัสดีครับ คุณ ณัฐนนท์ คุณได้ช่วย ลดมลพิษ ไป 1 Unit",
+    demo: <WebVitals count={10} />,
+  },
+  {
     title: "Beautiful, reusable components",
     description:
       "Pre-built beautiful, a11y-first components, powered by [Tailwind CSS](https://tailwindcss.com/), [Radix UI](https://www.radix-ui.com/), and [Framer Motion](https://framer.com/motion)",
     large: true,
   },
-  {
-    title: "Performance first",
-    description:
-      "Built on [Next.js](https://nextjs.org/) primitives like `@next/font` and `next/image` for stellar performance.",
-    demo: <WebVitals />,
-  },
+
   {
     title: "One-click Deploy",
     description:

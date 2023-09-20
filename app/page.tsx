@@ -7,6 +7,7 @@ import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
 import { start } from "repl";
+import { getProduct, productCreated } from "./co2";
 
 export default async function Home() {
   const { stargazers_count: stars } = await fetch(
@@ -24,7 +25,7 @@ export default async function Home() {
   )
     .then((res) => res.json())
     .catch((e) => console.log(e));
-
+  const product = await getProduct();
   return (
     <>
       <div className="z-10 w-full max-w-xl px-5 xl:px-0">
@@ -103,6 +104,8 @@ export default async function Home() {
             demo={
               title === "Beautiful, reusable components" ? (
                 <ComponentGrid />
+              ) : title === "You help to reduce Co2" ? (
+                <WebVitals count={product?.itemRelease || 0} />
               ) : (
                 demo
               )
@@ -119,7 +122,7 @@ const features = [
   {
     title: "You help to reduce Co2",
     description: "สวัสดีครับ คุณ ณัฐนนท์ คุณได้ช่วย ลดมลพิษ ไป 1 Unit",
-    demo: <WebVitals count={10} />,
+    // demo: <WebVitals count={product} />,
   },
   {
     title: "Beautiful, reusable components",

@@ -53,6 +53,11 @@ model User {
   sessions      Session[]
 }
 
+model Product {
+  id            String @id @default(cuid())
+  itemRelease   Int
+}
+
 model VerificationToken {
   identifier String
   token      String   @unique
